@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Fun with DOM</title>
+    <script type="text/javascript">
+        let clicks = 0;
+
+        // when window is loaded then run init
+        window.addEventListener('load', init);
+
+        function init() {
+            // access to the element(body) in the page
+            let thebody = document.body;
+            // add an evnet to listen for, event called click, when that happens clickCalled
+            thebody.addEventListener('click', clickCalled);
+            document.getElementById("mouseOverElement").addEventListener('mouseover', clickCalled);
+
+            function clickCalled() {
+                clicks++;
+                console.log(clicks);
+
+                // get access to anything on the page
+                let clicksElement = document.getElementById("clicks");
+                // change whatever inside the clicks
+                clicksElement.innerHTML = clicks;
+                //clicks
+                clicksElement.style.fontSize = clicks + "px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div> Number of Clicks: </div>
+    <!-- address the element -->
+    <div id="clicks">0</div>
+    <div id="mouseOverElement">Hover Here</div>
+</body>
+
+</html>

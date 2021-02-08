@@ -1,0 +1,17 @@
+.fun {
+    color: coral;
+    background-color: cornsilk;
+    font-size: 100px;
+}
+
+.notFun {
+    color: rgb(92, 80, 255);
+    background-color: rgb(255, 230, 0);
+    font-size: 50px;
+}
+
+#uniqueElement1 {
+    color: rgb(222, 89, 12);
+    font-size: 30px;
+    border: rosybrown 5px;
+}
