@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Your Journal</title>
+
+    <script type="text/javascript">
+
+        // when window is loaded then run init
+        // window.addEventListener('load', init);
+
+        // // random word generator to assist journal
+        // // refer:https://codepen.io/chiragbhansali/pen/EWppvy?__cf_chl_captcha_tk__=2bba37ba415db3540512b721e5547653eed3ce3a-1613442593-0-AQ3W6nBRrdIEkbxtY-UDm8bYk617R1iqixsRG8pHlVMWQqmqXSfQhgucy0p1IAQG886iTAFqXT8YTNEmtwa2F0hSN-T5Y98r_yA7cGahFPmTg34X9u9OHh-jgjGddsfX3z0HtDX1s023SJi8Ga--7E4UWkNqt76ZaYkGyAQb2siRCkO1SzCzVgnCUMWKrEaj3jiWRUrCp8Tn7Wshwy-vqU2v2aAvOGScm4FJBkxoFaLLgM4oLN7_zBYuNByalyQC41R9C2HMqDs3C-8BK2RhpFKHhho3svHn48JSwCECTGCaFOr-TtZ56ubI1LaSA4GYYxUzHDoUGhoUeqMkRLzgGJ-tju5_Ip5G6jdZklm7qvhcuGzCPBhyNSBCV5GACMVCZTX4U-ROrWAj88RU21hIRsb7L8Ao-w57VQpht5uy5hLZkubZPHnXWrOAjAwP1_Xzbke6HV5-T7yiCyOWClnMCJ7nM3S10QRN3wPSTtf20POn8GBuqWNqE27otXN7FBzJrZoNrpuD2oV6TXquvZnW1et7lmsBksh6HPo4J5jX3yjy9a2MZkOon6BTFXwTFruGNTAbDjqrt-DZvaTKyYZNuY27TyxcdzFUnUsplErgSsui
+        // var words;
+        // var rand;
+        // var content;
+        // words = ["Why?", "For what?", "With who?", "How was it?", "Oh that happend"];
+
+        // function randGen() {
+        //     return Math.floor(Math.random() * 5);
+        // }
+
+        // function sentence() {
+        //     rand = Math.floor(Math.random() * 5);
+        //     content = words[rand];
+        // };
+
+        // sentence();
+
+    //     function init() {
+    //         console.log("script.js value going in");
+    //         let randomValue = document.getElementById("random");
+    //         // change whatever inside the random
+    //         randomValue.innerHTML = content;
+    //     }
+    </script>
+
+
+</head>
+
+<body>
+    <h3 style='padding: 14px 16px'> Your journal 
+        <br><br>
+        <form method="GET" action="/search"> <input type="text" name="q" value="Search"> &nbsp
+        <input type="submit" value="Search">
+    </form> </h3>
+
+    <!--unwrapping ejs data-->
+    <!--query string-->
+    <!--for the href, it's creating a link to the new route called displayrecord and passing in new variable called "_id" with value coming out of database -->
+    <% if(data.length>0) {
+        for(var i =0; i<data.length; i++){ %>
+            <div id="dataout<%= i %>" style="color: <%= data[i].color %>; padding: 14px 16px">
+
+                <a href="/displayrecord?_id=<%=data[i]._id %>">
+                    <%=data[i].title %> <br>
+                        <%=data[i].time%> <br>
+                </a>
+            </div>
+
+            <% } } %>
+
+</body>
+
+</html>
