@@ -14,5 +14,7 @@ app.get("/", function (req, res) {
 
 // start listening for port
 // port: virutal private server to connect to, express normally is 80
-app.listen(80);
+app.listen(80, function(){
+    console.log('Example running on server 80')
+});
 
