@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>
+        <%= data.title %>
+    </title>
+</head>
+
+<body>
+    <h3 style='padding: 14px 16px'>
+        <%= data.title %>
+    </h3>
+
+    <!--unwrapping ejs data-->
+    <!--query string-->
+    <!--for the href, it's creating a link to the new route called displayrecord and passing in new variable called "_id" with value coming out of database -->
+    <div style="color: <%= data.color %>; padding: 14px 16px">
+        <%=data.text %> <br>
+            <%=data.time%> <br>
+    </div>
+
+</body>
+
+</html>

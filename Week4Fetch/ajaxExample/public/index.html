@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Keep Track</title>
+    <link rel="stylesheet" href="style.css" />
+    <!--source attribute-->
+    <script src="script.js"></script>
+
+    <!--instead of going to new page, get data in this js-->
+    <script type="text/javascript">
+
+        var messages = null;
+        var submit = null;
+        var title = null;
+        var color = null;
+        var longText = null;
+
+        // when window is loaded then run init
+        window.addEventListener('load', function () {
+            messages = document.getElementById('messages');
+            submit = document.getElementById('submit');
+            submit.addEventListener('click', sendData);
+            title = document.getElementById('title');
+            color = document.getElementById('color');
+            longText = document.getElementById('longText');
+        });
+
+        function sendData() {
+            // query string always starts with "?" fetch
+            fetch('/formdata?title=' + title.value + '&color=' + color.value)
+                .then(response => response.json())
+                .then(data => populateMessages(data));
+        }
+
+        function populateMessages(newMessages) {
+            messages.innerHTML = "";
+            for (var i = 0; i < newMessages.length; i++) {
+                messages.innerHTML = messages.innerHTML + newMessages[i].title + "<br/>";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="messages" class=mainText>Previous journal</div>
+    <div class="topnav">
+        <a>Keep track of your day and your memories</a>
+    </div>
+
+    <!--when form data submited, send to router(at server.js)-->
+    <form>
+        <!--data in name is what sent to the user-->
+        <div class=mainText><label for="data">
+                Begin your journal</label>
+            <input type="text" id="title" name="title"> &nbsp
+            <br><br>
+            <input type="datetime-local" id="time" name="time">
+            <br><br>
+            <textarea name="paragraph_text" id="longText" value="Begin your journal" cols="50" rows="10"></textarea>
+            <br><br>
+            Text color <input type="color" id="color" name="color">
+            <br><br>
+            <input type="button" id="submit" name="submit" value="submit">
+        </div>
+    </form>
+
+</body>
+
+</html>
