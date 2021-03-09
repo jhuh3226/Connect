@@ -1,6 +1,6 @@
 var express = require('express');
 
-// Require cookie-parser
+// Require cookie-parser node module
 var cookieParser = require('cookie-parser');
 
 var app = express();
